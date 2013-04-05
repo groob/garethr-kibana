@@ -1,0 +1,15 @@
+description "start and stop kibana"
+author "Gareth Rushgrove"
+
+start on runlevel [23]
+stop on runlevel [06]
+
+respawn
+respawn limit 5 30
+
+chdir /opt/kibana
+
+console output
+script
+exec bundle exec ruby kibana.rb
+end script
