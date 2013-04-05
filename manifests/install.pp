@@ -1,6 +1,4 @@
 class kibana::install {
-  include 'git'
-
   if $kibana::manage_ruby == true {
     class { 'ruby':
       gems_version => latest,
