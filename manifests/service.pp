@@ -31,7 +31,8 @@ class kibana::service {
           File['/etc/init.d/kibana'],
           File['/etc/init/kibana.conf'],
         ],
-     }
+      }
+    }
   }
 
   File['/etc/init/kibana.conf'] ~> Service['kibana']
