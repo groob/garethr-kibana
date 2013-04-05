@@ -6,10 +6,7 @@ class kibana::service {
 
   file { '/etc/init/kibana.conf':
     ensure  => present,
-    content => $operatingsystem ? {
-      centos, redhat => template('kibana/etc/init/kibana-redhat.conf.erb'),
-      debian, ubuntu => template('kibana/etc/init/kibana.conf.erb')
-    }
+    content => template("kibana/etc/init/kibana-$operatingsystem.conf.erb"),
   }
 
   case $operatingsystem {
