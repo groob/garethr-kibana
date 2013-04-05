@@ -17,6 +17,7 @@ class kibana::service {
         hasrestart => true,
         start      => '/sbin/initctl start kibana',
         stop       => '/sbin/initctl stop kibana',
+        restart    => '/sbin/initctl restart kibana',
         status     => '/sbin/initctl status kibana | grep "/running" 1>/dev/null 2>&1',
       }
     }
