@@ -7,13 +7,26 @@ class kibana::install {
     }
   }
 
+  group { 'kibana':
+    ensure => 'present'
+  }
+  ->
+  user { 'kibana':
+    gid   => 'kibana',
+    shell => '/sbin/nologin',
+    home  => '/opt/kibana'
+  }
+  ->
   vcsrepo { '/opt/kibana':
     ensure   => present,
     provider => git,
     source   => 'git://github.com/rashidkpc/Kibana.git',
     revision => 'kibana-ruby',
+    owner    => 'kibana',
+    group    => 'kibana',
     before   => Bundler::Install['/opt/kibana'],
   }
+
   bundler::install {'/opt/kibana':
   }
 }

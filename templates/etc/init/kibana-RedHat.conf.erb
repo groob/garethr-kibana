@@ -8,6 +8,8 @@ respawn
 respawn limit 5 30
 
 chdir /opt/kibana
+setuid kibana
+setgid kibana
 
 console output
 script
