@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'kibana', :type => :class do
-  let(:facts) { {:osfamily => 'Debian', :lsbdistcodename => 'precise'} }
+  let(:facts) { {:osfamily => 'Debian', :operatingsystem => 'Debian', :lsbdistcodename => 'precise'} }
 
   context 'no parameters' do
     it { should create_class('kibana::config')}
