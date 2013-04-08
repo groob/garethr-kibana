@@ -8,10 +8,8 @@ respawn
 respawn limit 5 30
 
 chdir /opt/kibana
-setuid kibana
-setgid kibana
 
 console output
 script
-exec bundle exec ruby kibana.rb
+exec su -s /bin/sh -c 'bundle exec ruby kibana.rb' kibana
 end script
