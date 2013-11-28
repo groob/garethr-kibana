@@ -4,10 +4,9 @@ class kibana::service {
     target => '/lib/init/upstart-job',
   }
 
-  $os_small = downcase($::operatingsystem)
   file { '/etc/init/kibana.conf':
     ensure  => present,
-    content => template("kibana/etc/init/kibana-${os_small}.conf.erb"),
+    content => template("kibana/etc/init/kibana-${operatingsystem}.conf.erb"),
   }
 
   case $operatingsystem {
